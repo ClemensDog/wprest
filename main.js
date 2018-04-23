@@ -7,21 +7,14 @@ function fetchUsedCars(){
   lookingForData=true;
   
   fetch("https://t7.kea-alt-del.dk/wp-json/wp/v2/used_cars?_embed&per_page=2&page="+page)
-    .then(e => {
-    console.log(e.headers.get("x-wp-total"))
-      return e.json()
-    })
+    .then(e => e.json())
     .then(showCars);
 }
 
 function showCars(data){
   console.log(data)
   lookingForData=false;
-    if(Array.isArray(data)){
-      data.forEach(showSingleCar);    
-    }  
-  
-  
+  data.forEach(showSingleCar);    
 }
 
 function showSingleCar(aCar){
