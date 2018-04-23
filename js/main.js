@@ -5,7 +5,7 @@ let lookingForData = false;
 
 function fetchUsedCars(){
   lookingForData=true;
-  
+
   fetch("https://t7.kea-alt-del.dk/wp-json/wp/v2/used_cars?_embed&per_page=2&page="+page)
     .then(e => e.json())
     .then(showCars);
@@ -14,7 +14,7 @@ function fetchUsedCars(){
 function showCars(data){
   console.log(data)
   lookingForData=false;
-  data.forEach(showSingleCar);    
+  data.forEach(showSingleCar);
 }
 
 function showSingleCar(aCar){
@@ -23,15 +23,15 @@ function showSingleCar(aCar){
   clone.querySelector(".descript").innerHTML = aCar.content.rendered
   clone.querySelector(".price span").textContent=aCar.acf.price
   clone.querySelector(".color").style.background=aCar.acf.color
-  
+
   if(aCar._embedded["wp:featuredmedia"]){//img is there
      clone.querySelector("img").setAttribute("src", aCar._embedded["wp:featuredmedia"][0].media_details.sizes.medium.source_url)
   } else { // no img
       clone.querySelector("img").remove()
   }
-  
-  
-  
+
+
+
   carlist.appendChild(clone);
 }
 fetchUsedCars();
@@ -39,7 +39,7 @@ fetchUsedCars();
 
 //found this stuff online
 setInterval(function(){
-  
+
   if(bottomVisible() && lookingForData===false){
     console.log("We've reached rock bottom, fetching articles")
     page++;

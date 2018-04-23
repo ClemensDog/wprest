@@ -4,7 +4,7 @@ window.addEventListener('load',()=>{
   let menu = document.querySelector(".menu");
   let bars = menuIcon.querySelectorAll("rect");
   menuIcon.addEventListener('click', toggleMenu);
-  
+
   function toggleMenu(){
     menuOpen = !menuOpen;
     bars[0].classList.toggle("rotateDown");
