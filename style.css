@@ -1,7 +1,11 @@
+html, body {
+  margin: 0;
+}
 .car {
-  border: 1px solid #000;
+  border: 1px solid #888888;
   padding: 1.5em;
   margin: 1em;
+  box-shadow: 2px 3px rgba(0,0,0,0.3);
 }
 .car .color {
   width: 100px;
@@ -9,9 +13,16 @@
   background: yellow;
 }
 
+.appbar {
+  background: teal;
+  padding: 1em;
+}
+.container-fluid {
+  margin: 1em;
+}
 .menu {
   height: 30px;
-  margin-top: 16px;
+  margin-top: 10px;
   margin-left: 12px;
 }
 .menu rect {
