@@ -12,5 +12,34 @@ window.addEventListener('load',()=>{
     bars[2].classList.toggle("rotateUp");
     menu.classList.toggle("hidden");
   }
+
+  fetch("https://t7.kea-alt-del.dk/wp-json/wp/v2/categories")
+    .then(e=>e.json())
+    .then(buildMenu)
+
+  function buildMenu(data){
+    let parentElement = document.querySelector(".menu ul");
+    data.forEach(item => {
+      console.log(item);
+      let li = document.createElement("li");
+      let a = document.createElement("a");
+      a.textContent = item.name;
+      a.href="index.html?category="+item.id;
+
+      li.appendChild(a);
+      parentElement.appendChild(li);
+
+
+    })
+  }
+
+
+
+
+
+
+
+
+
 });
 

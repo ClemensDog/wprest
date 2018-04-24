@@ -72,6 +72,14 @@ html, body {
   grid-template-columns: 1fr;
 }
 
+#singleCar {
+  transition: all 0.3s;
+  transform: translateX(-100vw)
+}
+#singleCar.slideInCar{
+
+  transform: translateX(0)
+}
 @media (min-width: 1000px)  {
   #carlist {
     grid-template-columns: 1fr 1fr;

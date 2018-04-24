@@ -6,9 +6,18 @@ let lookingForData = false;
 function fetchUsedCars(){
   lookingForData=true;
 
-  fetch("https://t7.kea-alt-del.dk/wp-json/wp/v2/used_cars?_embed&per_page=2&page="+page)
-    .then(e => e.json())
-    .then(showCars);
+  let urlParams = new URLSearchParams(window.location.search);
+
+  let catid = urlParams.get("category");
+  let endpoint = "https://t7.kea-alt-del.dk/wp-json/wp/v2/used_cars?_embed&per_page=2&page="+page
+  if(catid){ // DRY
+    endpoint = "https://t7.kea-alt-del.dk/wp-json/wp/v2/used_cars?_embed&per_page=2&page="+page + "&categories="+catid
+  }
+    fetch(endpoint)
+      .then(e => e.json())
+      .then(showCars);
+
+
 }
 
 function showCars(data){
@@ -30,6 +39,7 @@ function showSingleCar(aCar){
       clone.querySelector("img").remove()
   }
 
+  clone.querySelector('.readmore').href="subpage.html?id=" + aCar.id;
 
 
   carlist.appendChild(clone);
